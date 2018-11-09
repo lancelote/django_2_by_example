@@ -1,2 +1,5 @@
 # PyCharm settings
 .idea/
+
+# SQLite database
+db.sqlite3
