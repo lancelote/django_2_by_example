@@ -17,3 +17,8 @@ Code for "Django 2 by Example" book by Antonio Mele
 - [ ] [Chapter 11: Rendering and Caching Content](chapter11)
 - [ ] [Chapter 12: Building an API](chapter12)
 - [ ] [Chapter 13: Going Live](chapter13)
+
+## Notes
+
+- The project does not represent the book' code as I made a bunch of changes, be accurate when using it as a reference
+- There're a lot of tests I wrote for learning purposes, be aware that sometimes I use bad testing practices just for an experiment (e.g. testing Django' functionality)
