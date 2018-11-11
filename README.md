@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/lancelote/django_2_by_example.svg)](https://travis-ci.org/lancelote/django_2_by_example)
+
 # django_2_by_example
 
 Code for "Django 2 by Example" book by Antonio Mele
