@@ -7,4 +7,5 @@ install:
   - pip install -r requirements.txt
 
 script:
-  - pytest chapter01/mysite
+  - pytest chapter01/mysite/blog/tests/unit
+  - pytest chapter01/mysite/blog/tests/functional
