@@ -3,13 +3,18 @@ sudo: required
 dist: xenial
 python: "3.7"
 
+addons:
+  firefox: "latest"
+
 install:
   - make deps
 
 before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - sleep 3
+  # Get webdriver for selenium
+  - wget https://github.com/mozilla/geckodriver/releases/download/v0.23.0/geckodriver-v0.23.0-linux64.tar.gz
+  - mkdir geckodriver
+  - tar -xzf geckodriver-v0.23.0-linux64.tar.gz -C geckodriver
+  - export PATH=$PATH:$PWD/geckodriver
 
 script:
   - make unittest
