@@ -23,4 +23,4 @@ before_script:
 script:
   - make unittest
   - ls -l
-  - pytest --driver Firefox --driver-path geckodriver chapter01/mysite/blog/tests/functional
+  - pytest --driver Firefox --driver-path $PWD/geckodriver chapter01/mysite/blog/tests/functional
