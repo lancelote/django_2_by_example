@@ -3,3 +3,6 @@
 
 # SQLite database
 db.sqlite3
+
+# Webdriver
+vendor/geckodriver

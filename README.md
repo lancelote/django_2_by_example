@@ -20,6 +20,18 @@ Code for "Django 2 by Example" book by Antonio Mele
 - [ ] [Chapter 12: Building an API](chapter12)
 - [ ] [Chapter 13: Going Live](chapter13)
 
+## Requirements
+
+- macOS
+- Linux
+- Python 3.6+
+- See [requirements.txt](requirements.txt) for Python packages
+
+## Tests
+
+- `make unittest` - unit tests 
+- `make functest` - functional tests with Selenium and Firefox, run `make webdriver` to setup `geckodriver`
+
 ## Notes
 
 - The project does not represent the book' code as I made a bunch of changes, be accurate when using it as a reference

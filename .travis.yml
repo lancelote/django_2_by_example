@@ -7,10 +7,7 @@ addons:
   firefox: "latest"
 
 before_install:
-  # Get webdriver for selenium
-  - wget https://github.com/mozilla/geckodriver/releases/download/v0.23.0/geckodriver-v0.23.0-linux64.tar.gz
-  - tar -xzf geckodriver*.tar.gz
-  - rm geckodriver*.tar.gz
+  - make webdriver
 
 install:
   - make deps
@@ -22,4 +19,4 @@ before_script:
 
 script:
   - make unittest
-  - pytest --driver Firefox --driver-path $PWD/geckodriver chapter01/mysite/blog/tests/functional
+  - make functest
