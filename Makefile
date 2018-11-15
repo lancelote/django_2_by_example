@@ -12,7 +12,7 @@ unittest:
 	pytest chapter01/mysite/blog/tests/unit
 
 functest:
-	pytest --driver Firefox --driver-path $PWD/vendor/geckodriver chapter01/mysite/blog/tests/functional
+	pytest --driver Firefox --driver-path "${PWD}/vendor/geckodriver" chapter01/mysite/blog/tests/functional
 
 deps:
 	pip install -r requirements.txt
