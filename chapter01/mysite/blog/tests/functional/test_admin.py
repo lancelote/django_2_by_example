@@ -1,26 +1,3 @@
-import pytest
-from selenium import webdriver
-from selenium.webdriver.support.ui import Select
-
-from django.contrib.auth import get_user_model
-from django.contrib.staticfiles.testing import StaticLiveServerTestCase
-
-from blog.tests.factories import PostFactory
-
-
-def login(browser, username, password):
-    """Login given user into django admin
-    Args:
-        browser: Browser instance
-        username (str)
-        password (str)
-    """
-    login_form = browser.find_element_by_id('login-form')
-    login_form.find_element_by_name('username').send_keys(username)
-    login_form.find_element_by_name('password').send_keys(password)
-    login_form.find_element_by_css_selector('.submit-row input').click()
-
-
 class TestPostAdmin:
 
     def test_displayed_list(self, post_factory, admin, browser, live_server):
@@ -31,17 +8,17 @@ class TestPostAdmin:
         # Admin opens admin panel
         browser.get(live_server.url + '/admin')
 
-        # He checks page title to be sure he is in the right place
+        # Admin checks page title to be sure he is in the right place
         assert browser.title == 'Log in | Django site admin'
 
-        # He logs in
-        login(browser, 'admin', 'password')
+        # Admin logs in
+        browser.login('admin', 'password')
 
-        # He sees a link to Posts
+        # Admin sees a link to Posts
         posts_link = browser.find_element_by_link_text('Posts')
         assert posts_link.get_attribute('href') == live_server.url + '/admin/blog/post/'
 
-        # He clicks on a Posts link and see table of posts with columns: title, slug, author, publish and status
+        # Admin clicks on a Posts link and see table of posts with columns: title, slug, author, publish and status
         posts_link.click()
         assert browser.find_element_by_css_selector('.column-title a').text == 'TITLE'
         assert browser.find_element_by_css_selector('.column-slug a').text == 'SLUG'
@@ -49,8 +26,28 @@ class TestPostAdmin:
         assert browser.find_element_by_css_selector('.column-publish .text a').text == 'PUBLISH'
         assert browser.find_element_by_css_selector('.column-status .text a').text == 'STATUS'
 
+        # Admin can filter by status, created date and publish date
+        filter_div = browser.find_element_by_id('changelist-filter')
+        filter_options = filter_div.find_elements_by_tag_name('h3')
+        assert filter_options[0].text == 'By status'
+        assert filter_options[1].text == 'By created'
+        assert filter_options[2].text == 'By publish'
 
-# @pytest.mark.skip
+        # Admin can search by post title and body
+        assert len(browser.search_model_by('')) == 2
+        assert len(browser.search_model_by(post1.title)) == 1
+        assert len(browser.search_model_by(post2.title)) == 1
+        assert len(browser.search_model_by('Unknown Post')) == 0
+
+        # Admin can see the date hierarchy links by publish date
+        browser.find_element_by_class_name('xfull')
+
+        # Posts shorted by status and than by publish date
+        browser.search_model_by('')
+        assert browser.find_element_by_css_selector('th:last-child span').text == '1'
+        assert browser.find_element_by_css_selector('th:nth-child(5) span').text == '2'
+
+
 # class TestModelAdmin(StaticLiveServerTestCase):
 #
 #     def setUp(self):
