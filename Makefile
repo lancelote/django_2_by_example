@@ -15,6 +15,9 @@ functest:
 	pytest --driver Firefox --driver-path "${PWD}/vendor/geckodriver" chapter01/mysite/blog/tests/functional
 
 deps:
+	pur -r requirements.txt
+
+update:
 	pip install -r requirements.txt
 
 webdriver:
