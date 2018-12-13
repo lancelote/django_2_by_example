@@ -49,6 +49,7 @@ class TestPost:
         assert list(user1_posts) == [post3, post1]
         assert list(user2_posts) == [post2]
 
+    @pytest.mark.xfail(reason='https://code.djangoproject.com/ticket/29182')
     def test_remove_user_remove_blog_posts(self, post_factory, user_factory):
         user1 = user_factory()
         user2 = user_factory()
