@@ -10,7 +10,7 @@ before_install:
   - make webdriver
 
 install:
-  - make deps
+  - make update
 
 before_script:
   - export DISPLAY=:99.0
