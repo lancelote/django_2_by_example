@@ -8,7 +8,7 @@ db.sqlite3
 vendor/geckodriver
 
 # Python byte-code
-__pycache__/
+__pycache__
 
 # Pytest cache
 .pytest_cache/
